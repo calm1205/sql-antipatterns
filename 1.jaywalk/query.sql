@@ -9,3 +9,6 @@ SELECT account_name
 FROM Products AS p 
 INNER JOIN Accounts AS a  
 ON p.account_id REGEXP '(^|,)' || a.account_id || '(,|$)'  WHERE p.product_id = 2; 
+
+-- 製品ごとのアカウント数
+SELECT product_id, LENGTH(account_id) - LENGTH(REPLACE(account_id,',','')) + 1  AS contacts_per_product  FROM Products; 
